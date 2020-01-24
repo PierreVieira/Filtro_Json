@@ -1,0 +1,402 @@
+\documentclass[16pt]{examdesign}
+
+
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath}
+\usepackage{pifont}
+%\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{amssymb}
+%\SectionFont{\large\sffamily}
+\Fullpages
+\ContinuousNumbering
+%\ShortKey
+%\NoKey
+
+\DefineAnswerWrapper{}{}
+\NumberOfVersions{4}
+%\IncludeFromFile{foobar.tex}
+\usepackage{colortbl}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\setrandomseed{1373}
+\usepackage[portuguese]{algorithm2e}
+\definecolor{lightgray}{rgb}{0.85, 0.85, 0.85}
+\newtheorem{theorem}{THEOREM}
+\newtheorem{proof}{PROOF}
+\newcommand{\hgrayline}{\arrayrulecolor{lightgray}\hline\arrayrulecolor{black}}
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\hoffset}{-55pt}
+
+
+\addtolength{\voffset}{-30pt}
+\addtolength{\textheight}{50pt}
+
+
+
+
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\aspas}{``}
+
+\hyphenation{usa-do}
+\hyphenation{tem-pe-ra-tu-ra}
+% \newenvironment{Figure}
+%   {\par\medskip\noindent\minipage{\linewidth}}
+%   {\endminipage\par\medskip}
+
+%\setlength\columnsep{25pt}
+%Static/final
+%Erro no código
+%Teorica
+%O que imprime? 
+%Visibilidade
+
+\begin{document}
+
+
+\begin{examtop}
+
+      \pgfdeclaremask{cefetLogo}{cefetLogo}
+      \pgfdeclareimage[mask=cefetLogo,height=2cm]{cefetLogo}{../../../img/cefetLogo.png}
+      
+    \begin{multicols}{2}[]
+    \begin{minipage}{2.5cm}
+      \pgfuseimage{cefetLogo}
+    \end{minipage}
+      \columnbreak
+      \begin{minipage}{400px}
+      \begin{center}\large{\textbf{Matematica Discreta - Prova 1}}\end{center}~\\
+      Professor: Daniel Hasan Dalip~~~~~~~~Valor: 33 Pontos~~~~~Belo Horizonte, 12/09/2016\\~\\
+      Nome do(a) Aluno(a): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_~
+      Nota:\_\_\_\_\_\_\_\_\_\_\_\\       
+      \end{minipage}
+
+
+
+    \end{multicols}
+  \hrulefill
+  \begin{multicols}{2}[]
+  
+    \begin{itemize}
+    \item Prova individual e sem consulta.\vspace{-6pt}
+    \item Não é permitido o uso de aparelhos eletrônicos  \vspace{-6pt}
+    \item A interpretação da questão faz parte da avaliação  \vspace{-6pt}
+    \item A prova pode ser feita a lápis ou caneta  \vspace{-6pt}
+    \item Qualquer tentativa de cola/fraude a prova será zerada  \vspace{-6pt}
+    \end{itemize}
+  \end{multicols}
+
+\def\arraystretch{1}
+\end{examtop}
+
+
+ 
+ 
+\begin{multiplechoice}[title={Questões de múltipla escolha (3 pontos cada) },rearrange=no, resetcounter=no,suppressprefix,examcolumns=2,keycolumns=2]
+%\begin{center}
+%    \textbf{Prova entregue sem preencher gabarito abaixo não será considerada.}\vspace{1em}
+%  
+%    \begin{tabular}{ | p{0.92cm} | p{0.92cm} | p{0.92cm} | p{0.92cm} |p{0.92cm} |  }
+%     \hline
+%      1 & 2 & 3 & 4  & 5\\ \hline
+%      (a) &(a) &(a) &(a)&(a)  \\ \hline
+%      (b) &(b) &(b) &(b)&(b) \\ \hline
+%      (c) &(c) &(c) &(c)&(c) \\ \hline
+%      (d) &(d) &(d) &(d)&(d) \\ \hline
+%      (e) &(e) &(e) &(e)&(e) \\ \hline
+%    \end{tabular} ~\\
+%   %\begin{multicols}{2}[]
+%\end{center}
+%   %\begin{multicols}{2}[]
+%Multipla Escolha
+%    (1) Conjunto similar 1
+%    (2) Conjunto similar 2
+%    (3) Injetora/sobrejetora/nao eh funcao
+%    (4) Argumento invalido
+%    (5) Produtorio
+
+%Aberta
+%  -> Prova de teorema
+%  -> Prova por induçao
+%  -> Demonstraçao de argumento
+  \begin{question}
+	  O produtório $\prod_{i=0}^{2} {(i+2)}$ é igual a:
+		%(0+2)*(1+2)*(2+2)= 2*3*4=24
+		%(1+2)*(2+2)*(3+2)= 3*4*5=60
+		%1*3
+		\choice{0}
+		\choice{3}
+		\choice{6}
+		\choice{24}
+		\choice{40}
+		
+		%\choice{\word{{\FD}{\V}  {\FD}{\FD}}}
+		\key{~\\~\\ Resposta: \word{{d} {e}}}
+  \end{question}
+
+	\begin{question}
+	 Considere os argumentos abaixo:  
+		  \begin{itemize}
+	   \item[(1) ] Se Paulo é um bom nadador, então ele é um bom corredor.
+	   Se Paulo é um bom corredor, então ele é um bom ciclista. Paulo não é um bom ciclista. Logo, Paulo não é um bom nadador. %V Facil
+	   \item[(2) ] Se estiver frio, então está chovendo. Não está \word{{frio}{chovendo}}. Logo, não está \word{{chovendo}{frio}}.%F Mais dificil%V 
+	   %not q
+	   %q-> r
+	   %not r
+	   \item[(3) ] Alice não possui uma moto. Se Alice possuir um\word{{ iate}{a moto}}, então ela possui um\word{{a moto}{ iate}}. 
+	   Logo, Alice não possui um iate. %V Mais dificil%F 
+	   %p e not q   
+	   %r-> q    %q -> r
+	   %not r
+	  \end{itemize}
+	
+	Quais deles são válidos? 	    
+	    \choice{\word{{2}{3}}}
+	    \choice{1 e 2}
+	    \choice{1 e 3}
+	    \choice{2 e 3}
+	    \choice{1, 2 e 3}
+	    
+	    \key{~\\~\\ Resposta: \word{{c} {b}}}
+	\end{question}
+	\begin{question}
+	    
+	  Seja $A = \{1,2,3\}$, $B = \{a, b, c\}$, $C = \{1, 2\}$ e $D =\{a, b\}$.Dado as funcões abaixo, assinale a função \word{{sobrejetora}{injetora}}.
+	    
+	  \choice{Função $A \to B$, onde: $f(1) = a$, $f(2) = a$, $f(3) = c$}
+	  \choice{Função $A \to B$, onde: $g(1)=a$, $g(2) = a$, $g(3)=c$, $g(1)=b$}
+	  \choice{Função $C \to B$, onde: $h(1)=a$, $h(2) = c$}
+	  \choice{Função $A \to D$, onde: $i(1) =a$, $i(2) = a$, $i(3) = b$}
+	  \choice{Nenhuma das alternativas acima}
+
+	    
+	    \key{~\\~\\ Resposta: \word{{d} {c}}}
+	\end{question}
+    
+        \begin{question}%OK
+        Dentre as alternativas abaixo:
+        \newcommand{\VA}{Se considerarmos $A =\{a,b\}$, então podemos afirmar que  $P(A) = \{\emptyset, \{a\}, \{b\}, \{a,b\}\}$. Onde $P(A)$ é o conjunto
+        potência de $A$.}
+        \newcommand{\VB}{Considere os conjuntos $X$, $Y$ e $Z$. Podemos afirmar que: $(X-Z) \cap (Z-Y) = \emptyset$.}
+        \newcommand{\FC}{Considerando os conjuntos $A$ e $B$. Podemos afirmar que $A \times B = B \times A$.}
+        \newcommand{\FD}{Seja $A = \{1,\{2,3\}\}$. A cardinalidade de $A$ é 3.} 
+	  \begin{itemize}
+	   \item[(1) ] \word{{\FD}{\VA}}
+	   \item[(2) ] \word{{\VA}{\VB}}%V
+	   \item[(3) ] \word{{\VB}{\FD}}%V 
+	   \item[(4) ] \word{{\FC}{\FC}}%F
+	  \end{itemize}
+
+	  Quais delas são verdadeiras?
+	  \choice{1 e 4}
+	  \choice{1 e 2}
+	  \choice{2 e 3}
+	  \choice{2 e 4}
+	  \choice{3 e 4}
+	  \key{\word{{c}{b}}}
+   \end{question}
+
+
+
+\end{multiplechoice}
+\begin{fillin}[title={},
+                    rearrange=no,resetcounter=no,suppressprefix]
+\newpage
+           %Conversao dec -> bin e hex (2 alts) [6 pts]
+           %Equivalencias (2 alts) [6 pts]
+           %V ou F (3 alts) [6 pts]
+          Responda as questões de forma mais clara possível.
+          O aluno também perderá ponto caso não esteja clara a resposta ou se não foi mostrado como que se chegou em um determinado resultado.
+          
+	\begin{question}
+
+
+ 	 Transforme os seguintes argumentos em proposições. Logo após, demonstre se a validade de cada argumento preenchendo a tabela abaixo (poderá haver mais linhas que o necessário). 
+ 	 Você \textbf{deve} justificar, na demonstração, se foi usada uma premissa/hipótese ou qual foi a regra de inferência utilizada. 
+ 	 As possíveis regras são: Simplificação, Adição, Conjunção, Modus Ponens, Modus Tolens, Generalização Universal, Instanciação Universal, Generalização Existencial, Instanciação Existencial.
+ 	 Ao usar uma regra de inferência não esqueça de indicar qual afirmativa foi usada para utilizar tal regra. [7 pontos]
+  	 
+ 	 %Respostas que mostram o resultado sem utilizar as regras de inferências não serão consideradas.
+ 	%\begin{multicols}{2}[]
+	  \begin{itemize}
+	   \item[a)] João gosta de feijão. Se joão gosta de feijão, então ele não gosta de macarrão. 
+	   Se João não gosta de macarrão, então ele sabe cozinhar. Logo, João sabe cozinhar.
+	   %p \and q, p, p-> \not q. q \to r. \not r
+	   
+	  \textbf{ Variáveis proposicionais}: 
+		%\key{$p$: João gosta de arroz}~\\	
+		\key{$p$: João gosta de feijão}~\\
+		\key{$q$: João gosta de macarrão}~\\~\\
+		\key{$r$: João sabe cozinhar}~\\~\\
+		~\\
+		Demonstração: ~\\
+	      \begin{tabular}{ | p{1cm}  p{4cm}  p{10cm}  |}
+	    \hline
+	    Num.	 & Afirmação 	& Justificativa  \\ \hline
+		\key{1}	 & \key{$p$}   	& \key{Premissa}\\\hgrayline 
+		%\key{2}	 & \key{$p$}   		& \key{Simplificação de (1)}\\\hgrayline 
+		\key{2}	 & \key{$p \to \not q$} & \key{Premissa}\\\hgrayline 
+		\key{3}	 & \key{$\not q$}   	& \key{Modus Ponens de (2) e (1)}\\\hgrayline 
+		\key{4}	 & \key{$\not q \to r$}   	& \key{Premissa}\\\hgrayline 
+			 & \key{$\therefore r$}   	& \key{Modus Ponens usando (3) e (4)}\\\hgrayline 
+			 & \key{}   	& \key{}\\\hgrayline 
+			 & \key{}   	& \key{}\\\hgrayline
+			 & \key{}   	& \key{}\\\hgrayline 
+		 \hline	
+	    \end{tabular}
+
+	   %\columnbreak
+	   \item[b)]  Todos que falam português, falam inglês. Alice fala japonês. Alice fala português. Logo, existe alguém que fala inglês e japonês.
+	   %forall P(x) \to I(x), P(alice) -> I(alice). J(alice). I(alice) \land J(alice).
+	   
+	   \textbf{Variáveis proposicionais:}
+		\key{$P(x)$: x fala português}\\
+		\key{$I(x)$: x fala inglês}\\		 	    
+		\key{$J(x)$: x fala japonês}\\~\\~\\	
+	Demonstração: \\
+	\begin{tabular}{ | p{1cm}  p{4cm}  p{10cm}  |}
+	    \hline
+	    Num.	 & Afirmação 	  		& Justificativa  \\ \hline
+	      \key{(1)}	& \key{$\forall P(x) \to I(x)$}   	& \key{premissa}	\\ \hgrayline
+	      \key{(2)}	& \key{$P(Alice)$}     			& \key{Premissa}		\\ \hgrayline
+	      \key{(3)}	& \key{$P(Alice) \to I(Alice)$}     	& \key{Instanciação Universal usando (1) e (2)}		\\ \hgrayline
+	      \key{(4)}	& \key{$I(Alice)	$}     		& \key{Modus Ponens usando (2) e (3)}		\\ \hgrayline
+	      \key{(5)}	& \key{$J(Alice) $}     		& \key{premissa} \\ \hgrayline
+	      \key{(6)}	& \key{$I(Alice) \land J(Alice) $}      & \key{Conjunção usando (4) e (5)}\\ \hgrayline
+	      %\cline{2-2}
+		 	& \key{$\therefore \exists x (I(x) \land J(x))$}   & \key{Generalização Existencial usando (6)}\\\hgrayline 
+		     	&     					 & \\ \hgrayline
+		     	&     					 & \\ \hgrayline
+		     	&     					 & \\ \hgrayline
+		 \hline	
+	    \end{tabular}
+	   
+	   \end{itemize}
+	   
+      %\end{multicols}
+      \pagebreak
+    \end{question}
+    \begin{question}
+    
+Prove usando os tipos de prova indicados [7 pontos]:
+      
+      %ERRO CONTRAPOSICAO: 4n+5 nunca serah par!
+            	    \begin{tabular}{p{9cm}|p{9cm}}
+	a) Usando prova direta, prove que se $n$ é um número inteiro \word{{par}{impar}}, então \word{{$3n+6$}{$5n+3$}{$3n+8$}{$5n+5$}}$ $ é par 
+							&b) Usando prova por contraposição, prove que se \word{{$4n+5$}{$3n+2$}{$5n+2$}{$3n+6$}} é par então $n$ é par:\\
+							& 							 			\\
+							& 	  									\\ 		
+							& 		  								\\
+							& 			  							\\
+							& 				  						\\
+							& 				  						\\					
+							& 				  						\\					
+							& 				  						\\
+							& 				  						\\
+							& 				  						\\
+							& 				  						\\					
+							& 				  						\\					
+							& 				  						\\
+							& 				  						\\
+														& 				  						\\
+							& 				  						\\					
+							& 				  						\\					
+							& 				  						\\
+							& 				  						\\
+	\end{tabular}
+    \end{question}
+    \begin{question}
+	  \newcommand{\miRMenosUm}{\word{{2}{4}{5}{6}}}
+	  \newcommand{\miR}{\word{{3}{5}{6}{7}}}
+	  \newcommand{\miX}{\word{{2}{3}{5}{4}}}
+	  Prove por indução matemática [7 pontos]:
+	  
+	  a) \begin{Large}$\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$\end{Large}, para todo $n >0$
+	
+	
+	
+	         	    \begin{tabular}{p{9cm}|p{10cm}} 
+	Passo Base: 			&Passo de Indução: \\
+										& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+	\end{tabular}
+	\begin{center}
+	\textbf{Letra (b) no verso}	 
+	\end{center}
+
+
+	\pagebreak
+	b) \begin{Large}$\sum_{i=0}^{n} (\miX \times \miR^i) = \frac{\miX \times \miR^{n+1}-\miX}{\miRMenosUm}$\end{Large}, para todo \textbf{$n \ge 0$}
+	
+	
+	\begin{tabular}{p{9cm}|p{10cm}} 
+	Passo Base: 			&Passo de indução: \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+	\end{tabular}
+    \end{question}
+
+
+\end{fillin}
+\end{document}

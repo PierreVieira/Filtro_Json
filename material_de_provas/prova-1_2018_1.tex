@@ -1,0 +1,300 @@
+\documentclass[16pt]{examdesign}
+
+
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath}
+\usepackage{pifont}
+%\usepackage{gensymb}
+\usepackage{textcomp}
+%\SectionFont{\large\sffamily}
+\Fullpages
+\ContinuousNumbering
+%\ShortKey
+%\NoKey
+
+\DefineAnswerWrapper{}{}
+\NumberOfVersions{2}
+%\IncludeFromFile{foobar.tex}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\setrandomseed{1373}
+\usepackage[portuguese]{algorithm2e}
+\definecolor{lightgray}{rgb}{0.85, 0.85, 0.85}
+\newtheorem{theorem}{THEOREM}
+\newtheorem{proof}{PROOF}
+\newcommand{\hgrayline}{\arrayrulecolor{lightgray}\hline\arrayrulecolor{black}}
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\hoffset}{-55pt}
+
+
+\addtolength{\voffset}{-30pt}
+\addtolength{\textheight}{50pt}
+
+
+
+
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\aspas}{``}
+\hyphenation{cor-res-pon-de}
+\hyphenation{usa-do}
+\hyphenation{tem-pe-ra-tu-ra}
+% \newenvironment{Figure}
+%   {\par\medskip\noindent\minipage{\linewidth}}
+%   {\endminipage\par\medskip}
+
+%\setlength\columnsep{25pt}
+%Static/final
+%Erro no código
+%Teorica
+%O que imprime? 
+%Visibilidade
+
+\begin{document}
+
+
+\begin{examtop}
+%%%%%%%%%%%%%%%Imagens%%%%%%%%%%%%%%%%
+\pgfdeclaremask{grafo}{grafo}
+\pgfdeclareimage[mask=grafo,height=3cm]{grafo}{img/grafo.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \pgfdeclaremask{cefetLogo}{cefetLogo}
+      \pgfdeclareimage[mask=cefetLogo,height=2cm]{cefetLogo}{../../../img/cefetLogo.png}
+      
+    \begin{multicols}{2}[]
+    \begin{minipage}{2.5cm}
+      \pgfuseimage{cefetLogo}
+    \end{minipage}
+      \columnbreak
+      \begin{minipage}{400px}
+      \begin{center}\large{\textbf{Matematica Discreta - Prova 1}}\end{center}~\\
+      Professor: Daniel Hasan Dalip~~~~~~~~Valor: 30 Pontos~~~~~Belo Horizonte, 26/03/2018\\~\\
+      Nome do(a) Aluno(a): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_~
+      Nota:\_\_\_\_\_\_\_\_\_\_\_\\       
+      \end{minipage}
+
+
+
+    \end{multicols}
+  \hrulefill
+  \begin{multicols}{2}[]
+  
+    \begin{itemize}
+    \item Prova individual e sem consulta.\vspace{-6pt}
+    \item Não é permitido o uso de aparelhos eletrônicos  \vspace{-6pt}
+    \item A interpretação da questão faz parte da avaliação  \vspace{-6pt}
+    \item A prova pode ser feita a lápis ou caneta  \vspace{-6pt}
+    \item Qualquer tentativa de cola/fraude a prova será zerada  \vspace{-6pt}
+    \item As propriedades de equivalências estão após a última questão da prova  \vspace{-6pt}
+    \end{itemize}
+  \end{multicols}
+
+\def\arraystretch{1}
+\end{examtop}
+
+
+ 
+ 
+\begin{multiplechoice}[title={Questões de múltipla escolha (2,5 pontos cada) },rearrange=no, resetcounter=no,suppressprefix,examcolumns=2,keycolumns=2]
+  \begin{question}
+    O número em binário \word{{100010010001111000111000}{100000111110000110011000}} corresponde a qual número em hexadecimal?
+			%
+    \choice{891E38}
+    \choice{451638}
+    \choice{83E198}
+    \choice{83D189}
+    \choice{891D38}
+    \key{Resposta \word{{a}{c}}}
+  \end{question}
+  
+   \begin{question}
+    [Adaptada, Quadrix, CRMV-RR, 2016] Sejam dadas as proposições a e b:
+
+a: \word{{O cachorro precisa de cirurgia.}{O cachorro está doente.}}\\
+b: \word{{O cachorro está doente.}{O cachorro precisa de cirurgia.}}
+
+Assinale a alternativa que contém a seguinte proposição expressa como uma expressão proposicional:
+
+“O cachorro precisa de cirurgia se o cachorro estiver doente”. 
+   \choice{$a \to b$}
+   \choice{$b \to a$}
+   \choice{$a \leftrightarrow b$}
+   \choice{$b \leftrightarrow a$}
+   \choice{$a \land b$}
+   \key{Resposta \word{{b}{a}}}
+\end{question}
+
+\begin{question}
+[FUNIVERSA, IF-AP, 2016] Assinale a alternativa que apresenta a negação correta da proposição “Todos os peixes são animais carnívoros”.
+    \choice{Os peixes não são carnívoros.} 
+    \choice{Todos os peixes são herbívoros.} 
+    \choice{Há peixes que \word{{não }{}}são carnívoros.} 
+    \choice{Há peixes que \word{{}{não }}são carnívoros.} 
+    \choice{Há peixes carnívoros e há peixes herbívoros.}
+    \key{Resposta \word{{c}{d}}}
+\end{question}
+
+\begin{question}
+ A sentença “Se hoje estiver frio, então eu irei ao cinema” é logicamente equivalente a:
+     \choice{Se irei ao cinema, então hoje está frio} 
+    \choice{\word{{Não irei}{Irei}} ao cinema ou hoje \word{{}{não }}está frio} 
+    \choice{\word{{Irei}{Não irei}} ao cinema ou hoje \word{{não }{}}está frio} 
+    \choice{Não irei ao cinema e hoje está frio} 
+    \choice{Irei ao cinema e hoje não está frio}
+    
+    \key{Resposta \word{{c}{b}}}
+\end{question}
+
+\begin{question}
+ Dentre as alternativas abaixo, qual é tautologia?
+ 
+
+    \choice{$\neg p \land \neg (\neg p \land q) $} %contradicao
+    \choice{$\neg p \land \neg (p \lor \neg q) $} 
+    \choice{$\neg p \land \neg (\neg p \lor q) $}
+    \choice{$\neg p \lor \neg (\neg p \word{{\lor}{\land}} q) $} 
+    \choice[!]{$\neg p \lor \neg (\neg p \word{{\land}{\lor}} q) $}     
+    \key{Resposta \word{{e}{d}}}
+\end{question}  
+
+    \begin{question}%OK
+ 	Considere os predicados $B(x):$ $x$ é brasileiro, $F(x)$: $x$ é feliz, $G(x)$: $x$ torce pelo atlético. 
+    O domínio são pessoas no mundo.   
+    Assim, a frase “Todo brasileiro que torce pelo atletico é feliz” corresponde a qual expressão usando predicados e quantificadores?
+ 
+% 
+
+ 	\choice{$\exists x (F(x) \to  (B(x) \land G(x))) $}
+ 	\choice{$\forall x (F(x) \to  (B(x) \land G(x))) $}
+ 	\choice{$\forall x (B(x) \to (F(x) \land G(x))) $}
+ 	\choice{$\forall x (B(x) \land F(x) \land G(x)) $}
+ 	\choice[!]{$\forall x ((B(x) \land G(x)) \to F(x)) $} 	
+
+ 	\key{~\\~\\ Resposta correta: e\\
+ 	\textbf{a)} Existe pelo menos uma pessoa que, se ela for feliz, então ela é brasileira e torce pelo atlético\\
+ 	\textbf{b)} Existe brasileiros felizes que torcem pelo atletico\\
+ 	\textbf{c)} Todas as pessoas são brasileiras, torcem pelo atlético e são felizes\\
+ 	\textbf{d)} Todas as pessoas felizes são brasileiras e torcem pelo atlético\\
+ 	}%OK
+   \end{question}
+
+\end{multiplechoice}
+\begin{fillin}[title={},
+                    rearrange=no,resetcounter=no,suppressprefix]
+\pagebreak
+           %Conversao dec -> bin e hex (2 alts) [6 pts]
+           %Equivalencias (2 alts) [6 pts]
+           %V ou F (3 alts) [6 pts]
+          Responda as questões de forma mais clara possível.
+          O aluno também perderá ponto caso não esteja clara a resposta ou se não foi mostrado como que se chegou em um determinado resultado.
+    \begin{question}
+     [4 pontos] Escreva, em português, a \textbf{negação} das sentenças a seguir. Para isso: (1) expresse essas sentenças utilizando proposições e operadores lógicos (não esqueça de definir o que é cada variável usada); (2) negue a expressão obtida;  (2) e, logo após, escreva o resultado em linguagem natural (i.e. português):
+     \begin{itemize}
+	    \item[a)] Ricardo \word{{}{não }}gosta de futebol mas \word{{não }{}}gosta de basquete.\\~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    \blank{Ricardo \word{{não}{}} gosta de futebol ou \word{{}{não}} gosta de basquete.~~~~~~~~} 
+	    
+	    \item[b)] Se \word{{não }{}}fizer sol amanhã, \word{{}{não }}irei ao cinema.\\~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    ~\\
+	    \blank{\word{{}{não }}irá fazer sol amanha e \word{{não }{}}irei ao cinema.~~~~~~~~~~~~~~~~~~~~~}
+	    \end{itemize}
+    \end{question}
+ \begin{question}
+      [5 pontos] Dado as proposições abaixo, determine se seguintes expressões lógicas são verdadeiras ou falsas. Aprensente a memória de cálculo:
+      
+      \begin{multicols}{2}[]
+	    \begin{itemize}
+	    \item $p$: vacas têm 4 patas
+	    \item $q$: gatos \word{{}{não}} sabem voar
+	    \item $r$: 3+2=6
+	    \item $s$: 5+5=10
+	    \end{itemize}
+      \end{multicols}
+      
+            	    \begin{tabular}{p{6cm}|p{6cm}}
+	a) $p \lor q \land s$:					& b) $(\neg p \lor r \land q) \leftrightarrow (r \land s)$\\
+								&\key{$(F \lor F \land \word{{F}{V}}) \leftrightarrow (F \land V)$}\\
+	\key{\word{{$V \lor F \land F$}{$V \lor V \land F$}}}	&\key{$(F \lor F) \leftrightarrow F)$}\\
+	\key{$V \lor F$}					&\key{$F \leftrightarrow F$}\\
+	\key{$V$}						&\key{$V$}\\
+								&\\
+								&\\
+					&\\
+					&\\
+					&\\
+					&\\					
+					&\\
+					&\\
+	\end{tabular}
+    \end{question}
+    \pagebreak
+\begin{question}
+	  [6 pontos] Verifique as equivalências abaixo sem utilizar a tabela verdade, para isso, use as propriedades da tabela a seguir.
+	  Você \textbf{deve} justificar, para cada linha, qual foi a propriedade de equivalência utilizada
+	   
+	   
+    
+	         	    
+      \begin{tabular}{p{9cm}|p{10cm}}
+	a) \word{{$p \to q \equiv \neg q \to \neg p$}{$q \to p \equiv \neg p \to \neg q$}}:		&b) $(p \lor q) \land (p \lor r) \equiv (\neg q \lor \neg r) \to p$: \\
+	   \key{  \word{{$\neg p \lor q$	}{$\neg q \lor p$}} $\equiv$ (condicional)}		& \key{$p \lor (q \land r) \equiv$ (Distributiva)}\\
+	   \key{ $\equiv$ \word{{$q \lor \neg p$	}{$p \lor \neg q$}} $\equiv$  (Comutativa)}	& \key{$\equiv (q \land r) \lor p \equiv$ (Comutativa)}\\
+	   \key{ $\equiv$ \word{{$\neg q \to \neg p$	}{$\neg p \to \neg q$}}    (condicional)}	& \key{$\equiv \neg (q \land r) \to p \equiv $ (Condicional)}\\
+												& 	  \key{$\equiv (\neg q \lor \neg r) \to p$ (Lei de De Morgan)}\\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+												& \\
+	\end{tabular}
+		   \begin{scriptsize}
+	    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+
+	    \cline{1-2} \cline{4-5} \cline{7-8}
+	    \textbf{Propriedade}& \textbf{Regra}		&  	& \textbf{Propriedade}	& \textbf{Regra}				&  & \textbf{Propriedade}& \textbf{Regra} \\ \cline{1-2} \cline{4-5} \cline{7-8}
+	   Elementos Neutros (EN)& $p  \land  V \equiv p$        &  	& Comutativa	(C)	& $p \land q \equiv q \land p$			&  & Associativa (ASS)	 &$(p  \lor q) \lor r \equiv p  \lor (q \lor r)$	\\ \cline{1-2} 
+	   Dominação	(D)	& $p  \lor  V \equiv V$		&  	&      			& $p \lor q  \equiv q \lor p$     		&  & 			 &$(p  \land q) \land r \equiv p  \land (q \land r)$	\\   \cline{4-5} \cline{7-8}
+				& $p  \land F \equiv F$		&  	& Leis de De Morgan (LM)    & $\neg (p \lor q) \equiv \neg p \land \neg q$  &  & Ou exclusivo (XOR)	 &$p \oplus q \equiv (p \lor q) \land \neg (p \land q)$	\\  \cline{1-2}  \cline{7-8}
+	 Idempotentes 	(I)	& $p  \land p \equiv p$		&  	&             		& $\neg (p \land q) \equiv \neg p \lor \neg q$  &  & Distributiva (DIST)	 &$p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)$	\\   \cline{4-5} 
+				& $p  \lor p \equiv p$		&	& Dupla negação	(DN)	& $\neg (\neg p) \equiv p$			&  & 			 &$p \land (q \lor r) \equiv (p \land q) \lor (p \land r)$	\\ \cline{1-2} \cline{4-5}  \cline{7-8}
+	  Negação	(N)	& $p \lor \neg p \equiv V$	&	& Absorção	(ABS)	& $p \lor (p \land q) \equiv p$			&  & Condicional (Cond)	 &$p \to q \equiv \neg p \lor q$	\\ 		 \cline{7-8}
+				& $p \land \neg p \equiv F$	&	& 			& $p \land (p \lor q) \equiv p$			&  & Bicondicional (Bicond)	 &$p \leftrightarrow q \equiv (p \to q) \land (q \to p)$	\\\cline{1-2} \cline{4-5} \cline{7-8}
+				&				&	&			&						&  & Contra
+	    \end{tabular}
+	\end{scriptsize}  
+    \end{question}
+
+    
+    
+\end{fillin}
+\end{document}

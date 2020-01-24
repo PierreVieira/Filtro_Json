@@ -1,0 +1,327 @@
+\documentclass[16pt]{examdesign}
+
+
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath}
+\usepackage{pifont}
+%\usepackage{gensymb}
+\usepackage{textcomp}
+%\SectionFont{\large\sffamily}
+\Fullpages
+\ContinuousNumbering
+%\ShortKey
+%\NoKey
+
+\DefineAnswerWrapper{}{}
+\NumberOfVersions{4}
+%\IncludeFromFile{foobar.tex}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\setrandomseed{1373}
+\usepackage[portuguese]{algorithm2e}
+
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\hoffset}{-55pt}
+
+
+\addtolength{\voffset}{-30pt}
+\addtolength{\textheight}{50pt}
+
+
+
+
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\aspas}{``}
+
+\hyphenation{usa-do}
+\hyphenation{tem-pe-ra-tu-ra}
+% \newenvironment{Figure}
+%   {\par\medskip\noindent\minipage{\linewidth}}
+%   {\endminipage\par\medskip}
+
+%\setlength\columnsep{25pt}
+%Static/final
+%Erro no código
+%Teorica
+%O que imprime? 
+%Visibilidade
+
+\begin{document}
+
+
+\begin{examtop}
+
+      \pgfdeclaremask{cefetLogo}{cefetLogo}
+      \pgfdeclareimage[mask=cefetLogo,height=2cm]{cefetLogo}{../../../img/cefetLogo.png}
+      
+    \begin{multicols}{2}[]
+    \begin{minipage}{2.5cm}
+      \pgfuseimage{cefetLogo}
+    \end{minipage}
+      \columnbreak
+      \begin{minipage}{400px}
+      \begin{center}\large{\textbf{Matematica Discreta - Prova 1}}\end{center}~\\
+      Professor: Daniel Hasan Dalip~~~~~~~~Valor: 33 Pontos~~~~~Belo Horizonte, 12/09/2016\\~\\
+      Nome do(a) Aluno(a): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_~
+      Nota:\_\_\_\_\_\_\_\_\_\_\_\\       
+      \end{minipage}
+
+
+
+    \end{multicols}
+  \hrulefill
+  \begin{multicols}{2}[]
+  
+    \begin{itemize}
+    \item Prova individual e sem consulta.\vspace{-6pt}
+    \item Não é permitido o uso de aparelhos eletrônicos  \vspace{-6pt}
+    \item A interpretação da questão faz parte da avaliação  \vspace{-6pt}
+    \item A prova pode ser feita a lápis ou caneta  \vspace{-6pt}
+    \item Qualquer tentativa de cola/fraude a prova será zerada  \vspace{-6pt}
+    \end{itemize}
+  \end{multicols}
+
+\def\arraystretch{1}
+\end{examtop}
+
+
+ 
+ 
+\begin{multiplechoice}[title={Questões de múltipla escolha (3 pontos cada) },rearrange=no, resetcounter=no,suppressprefix,examcolumns=2,keycolumns=2]
+%\begin{center}
+%    \textbf{Prova entregue sem preencher gabarito abaixo não será considerada.}\vspace{1em}
+%  
+%    \begin{tabular}{ | p{0.92cm} | p{0.92cm} | p{0.92cm} | p{0.92cm} |p{0.92cm} |  }
+%     \hline
+%      1 & 2 & 3 & 4  & 5\\ \hline
+%      (a) &(a) &(a) &(a)&(a)  \\ \hline
+%      (b) &(b) &(b) &(b)&(b) \\ \hline
+%      (c) &(c) &(c) &(c)&(c) \\ \hline
+%      (d) &(d) &(d) &(d)&(d) \\ \hline
+%      (e) &(e) &(e) &(e)&(e) \\ \hline
+%    \end{tabular} ~\\
+%   %\begin{multicols}{2}[]
+%\end{center}
+%   %\begin{multicols}{2}[]
+
+  \begin{question}
+	Considere p: João é esperto, q: João é rico. Assinale a  \textbf{NEGAÇÃO} da frase "João\word{{ não}{}} é esperto \word{{e}{e}{ou}{ou}}\word{{}{ não}} é rico", utilizando 
+	lógica proposicional: 
+
+	
+		\choice{$\neg p \land q$}
+		\choice{$p \land \neg q$}
+		\choice{\word{{$\neg p \land \neg q$}{$\neg p \land \neg q$}{$\neg p \lor \neg q$}{$\neg p \lor \neg q$}}}
+		\choice{$p \lor \neg q$}
+		\choice{$\neg p \lor q$}
+		
+		%\choice{\word{{\FD}{\V}  {\FD}{\FD}}}
+		\key{~\\~\\ Resposta: \word{{d} {e} {b} {a}}}
+  \end{question}
+ \begin{block}
+ Para as questoes  2 até 5 considere os predicados:  $D(x,y)$  o aluno $x$ está matriculado na disciplina $y$, $O(x)$: O aluno $x$ usa óculos. 
+ O domínio de $x$ são todos os alunos e $y$ são todas as disciplinas.
+    
+    Assinale, para cada questão, a expressão usando predicados e quantificadores que correponde à frase em português apresentada no enunciado. 
+	\begin{question}
+	    \newcommand{\FE}{$\exists x (O(x) \to D(x,\text{Cálculo}))$}
+	    \newcommand{\VE}{$\exists x (O(x) \land D(x,\text{Cálculo}))$}
+	    \newcommand{\VA}{$\forall x (O(x) \to D(x,\text{Cálculo}))$}
+	    \newcommand{\FA}{$\forall x (O(x) \land D(x,\text{Cálculo}))$}
+	    
+	    \word{{Existe pelo menos um aluno usando óculos matriculado na disciplina de Cálculo}
+		  {Existe pelo menos um aluno usando óculos matriculado na disciplina de Cálculo}
+		  {Todo aluno que usa óculos está matriculado na disciplina de Cálculo}
+		  {Todo aluno que usa óculos está matriculado na disciplina de Cálculo}
+		  }
+	    \choice{\word{{$\exists x \exists y (O(x) \to D(x,y))$}
+			   {$\exists x \exists y (O(x) \to D(x,y))$}
+			   {$\forall x \exists y (O(x) \land D(x,y))$}
+			   {$\forall x \exists y (O(x) \land D(x,y))$}
+			   }
+		}
+	    \choice{\word{{\FE}{\VE}}}
+	    \choice{\word{{\VE}{\FE}}}
+	    \choice{\word{{\VA}{\FA}}}
+	    \choice{\word{{\FA}{\VA}}}
+	    
+	    \key{~\\~\\ Resposta: \word{{c} {b} {d} {e}}}
+	\end{question}
+	\begin{question}
+	    \newcommand{\FE}{$\exists x (O(x) \to D(x,\text{Cálculo}))$}
+	    \newcommand{\VE}{$\exists x (O(x) \land D(x,\text{Cálculo}))$}
+	    \newcommand{\VA}{$\forall x (O(x) \to D(x,\text{Cálculo}))$}
+	    \newcommand{\FA}{$\forall x (O(x) \land D(x,\text{Cálculo}))$}
+	    
+	    \word{
+		  {Todo aluno que usa óculos está matriculado na disciplina de Cálculo}
+		  {Todo aluno que usa óculos está matriculado na disciplina de Cálculo}
+		  {Existe pelo menos um aluno usando óculos matriculado na disciplina de Cálculo}
+		  {Existe pelo menos um aluno usando óculos matriculado na disciplina de Cálculo}
+		  }
+	    \choice{\word{
+			    {$\forall x \exists y (O(x) \land D(x,y))$}
+			   {$\forall x \exists y (O(x) \land D(x,y))$}
+			    {$\exists x \exists y (O(x) \to D(x,y))$}
+			   {$\exists x \exists y (O(x) \to D(x,y))$}
+			   }
+		}
+	    \choice{\word{{\FE}{\VE}}}
+	    \choice{\word{{\VE}{\FE}}}
+	    \choice{\word{{\VA}{\FA}}}
+	    \choice{\word{{\FA}{\VA}}}
+	    
+	    \key{~\\~\\ Resposta: \word{{d} {e} {c} {b}}}
+	\end{question}
+    
+        \begin{question}%OK
+    \word{
+    	  {Existe pelo menos um aluno matriculado em todas as disciplinas}
+	  {Todos os alunos estão matriculados em alguma disciplina.}
+	  {Existe  pelo menos uma disciplina em que todos os alunos estão matriculados }
+	  {Todas as disciplinas possuem pelo menos um aluno matriculado}
+	  }
+	  \choice{$\exists y \forall x (D(x,y))$}
+	  \choice{$\forall y \exists x (D(x,y))$}
+	  \choice{$\exists x \forall y (D(x,y))$}
+	  \choice{$\forall x \exists y (D(x,y))$}
+	  \choice{$\exists x \exists y (D(x,y))$}
+	  \key{~\\~\\ Resposta: \word{{c} {d} {a} {b}}}
+   \end{question}
+    \begin{question}%OK
+    \word{
+	  {Existe  pelo menos uma disciplina em que todos os alunos estão matriculados }
+	  {Todas as disciplinas possuem pelo menos um aluno matriculado}
+	  {Existe pelo menos um aluno matriculado em todas as disciplinas}
+	  {Todos os alunos estão matriculados em alguma disciplina.}
+	  }
+	  \choice{$\exists y \forall x (D(x,y))$}
+	  \choice{$\forall y \exists x (D(x,y))$}
+	  \choice{$\exists x \forall y (D(x,y))$}
+	  \choice{$\forall x \exists y (D(x,y))$}
+	  \choice{$\exists x \exists y (D(x,y))$}
+	  \key{~\\~\\ Resposta: \word{{a} {b}{c} {d} }}
+   \end{question}
+\newpage
+\end{block}
+
+
+\end{multiplechoice}
+\begin{fillin}[title={},
+                    rearrange=no,resetcounter=no,suppressprefix]
+
+           %Conversao dec -> bin e hex (2 alts) [6 pts]
+           %Equivalencias (2 alts) [6 pts]
+           %V ou F (3 alts) [6 pts]
+	\begin{question}
+      Os números abaixo estão em decimal. Efetue a conversão para binário e hexadecimal [6 pontos].
+      
+      
+       	    \begin{tabular}{p{9cm}|p{10cm}}
+	a) \word{{33}{35}{37}{39}}:		&b) \word{{126}{125}{124}{123}}: \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+	Valor em binário:\key{\word{100{001}{011}{101}{111 }}}& Valor em binário: \key{1111\word{{110}{101}{100}{011}}}\\
+	Valor em hexadecimal:\key{\word{{21}{23}{25}{27}}}   & Valor em hexadecimal: \key{7\word{{E}{D}{C}{B}}}\\		
+	\end{tabular}
+    \end{question}
+    \begin{question}
+      Dado as proposições abaixo, determine se seguintes expressões lógicas são verdadeiras ou falsas [6 pontos]:
+      
+      \begin{multicols}{2}[]
+	    \begin{itemize}
+	    \item $p$: cachorros sabem voar
+	    \item $q$: vacas têm 5 patas
+	    \item $r$: 3+3=6
+	    \item $s$: 5+5=10
+	    \end{itemize}
+      \end{multicols}
+      
+            	    \begin{tabular}{p{4cm}|p{5cm}|p{4cm}}
+	a) $s \land q \lor r$:		&b) $[(p \land r) \lor s] \to s$: & c) $(p \lor r \land q) \leftrightarrow (r \land s)$\\
+					& \key{$[(F \land V) \lor V] \to V$} &\key{$(F \lor V \land F) \leftrightarrow (V \land V)$}\\
+	\key{$V \land F \lor V$}	& \key{$[F lor V] \to V$}	  &\key{$(F \lor F) \leftrightarrow (V \land V)$}\\
+	\key{$F \lor V$}		& \key{$ V \to V$}		  &\key{$F \leftrightarrow V$}\\
+	\key{$V$}			& \key{$V$}			  &\key{$F$}\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  &\\
+					& 				  & \\
+					&				  &\\
+					& 				  &\\			
+	\end{tabular}
+    \end{question}
+    \begin{question}
+	  Verifique as equivalências abaixo sem utilizar a tabela verdade [6 pontos]:
+	         	    
+	         	    
+	         	    \begin{tabular}{p{9cm}|p{10cm}}
+	a) $[(p \to q) \land (p \to r)] \equiv \neg (q \land r) \to \neg p$:	&b) $[\neg p \to (p \land q)] \land q \equiv p \land q$: \\
+										& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+					& \\
+	\end{tabular}
+    \end{question}
+
+
+\end{fillin}
+\end{document}

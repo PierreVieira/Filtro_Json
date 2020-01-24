@@ -1,0 +1,418 @@
+\documentclass[16pt]{examdesign}
+
+
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath}
+\usepackage{pifont}
+%\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{multirow}
+
+%\SectionFont{\large\sffamily}
+\Fullpages
+\ContinuousNumbering
+%\ShortKey
+%\NoKey
+
+\DefineAnswerWrapper{}{}
+\NumberOfVersions{4}
+%\IncludeFromFile{foobar.tex}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\setrandomseed{1373}
+\usepackage[portuguese]{algorithm2e}
+\definecolor{lightgray}{rgb}{0.85, 0.85, 0.85}
+\newtheorem{theorem}{THEOREM}
+\newtheorem{proof}{PROOF}
+\newcommand{\hgrayline}{\arrayrulecolor{lightgray}\hline\arrayrulecolor{black}}
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\hoffset}{-55pt}
+
+
+\addtolength{\voffset}{-30pt}
+\addtolength{\textheight}{50pt}
+
+%%%%%%%%%%%%%%%Imagens%%%%%%%%%%%%%%%%
+\pgfdeclaremask{grafo1}{grafo1}
+\pgfdeclareimage[mask=grafo1,height=3.5cm]{grafo1}{img/grafos_1.png}
+
+\pgfdeclaremask{grafo2}{grafo2}
+\pgfdeclareimage[mask=grafo2,height=3cm]{grafo2}{img/grafos_2.png}
+
+\pgfdeclaremask{grafo}{grafo}
+\pgfdeclareimage[mask=grafo,height=3cm]{grafo}{img/grafo.png}
+
+\pgfdeclaremask{grafoPR}{grafoPR}
+\pgfdeclareimage[mask=grafoPR, height=1.7cm]{grafoPR}{img/grafoPR.png}
+
+\pgfdeclaremask{dijkstra}{dijkstra}
+\pgfdeclareimage[mask=dijkstra, height=3cm]{dijkstra}{img/dijkstra.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\aspas}{``}
+\hyphenation{cor-res-pon-de}
+\hyphenation{usa-do}
+\hyphenation{tem-pe-ra-tu-ra}
+% \newenvironment{Figure}
+%   {\par\medskip\noindent\minipage{\linewidth}}
+%   {\endminipage\par\medskip}
+
+%\setlength\columnsep{25pt}
+
+      \pgfdeclaremask{regras}{regras}
+      \pgfdeclareimage[mask=regras,height=7cm]{regras}{img/regra_inferencia.png}
+      
+\begin{document}
+
+
+\begin{examtop}
+
+      \pgfdeclaremask{cefetLogo}{cefetLogo}
+      \pgfdeclareimage[mask=cefetLogo,height=2cm]{cefetLogo}{../../../img/cefetLogo.png}
+      
+    \begin{multicols}{2}[]
+    \begin{minipage}{2.5cm}
+      \pgfuseimage{cefetLogo}
+    \end{minipage}
+      \columnbreak
+      \begin{minipage}{400px}
+      \begin{center}\large{\textbf{Matemática Discreta - Prova 3}}\end{center}~\\
+      Professor: Daniel Hasan Dalip~~~~~~~~Valor: 33 Pontos~~~~~Belo Horizonte, 21/06/2018\\~\\
+      Nome do(a) Aluno(a): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_~
+      Nota:\_\_\_\_\_\_\_\_\_\_\_\\       
+      \end{minipage}
+
+
+
+    \end{multicols}
+  \hrulefill
+  \begin{multicols}{2}[]
+  
+    \begin{itemize}
+    \item Prova individual e sem consulta.\vspace{-6pt}
+    \item Não é permitido o uso de aparelhos eletrônicos  \vspace{-6pt}
+    \item A interpretação da questão faz parte da avaliação  \vspace{-6pt}
+    \item A prova pode ser feita a lápis ou caneta  \vspace{-6pt}
+    \item Qualquer tentativa de cola/fraude a prova será zerada  \vspace{-6pt}
+    \item As regras de inferencias estão após a última questão da prova  \vspace{-6pt}
+    \end{itemize}
+  \end{multicols}
+
+\def\arraystretch{1}
+\end{examtop}
+
+
+\begin{multiplechoice}[title={Questões de múltipla escolha (3 pontos cada) },rearrange=yes, resetcounter=no,suppressprefix,examcolumns=2,keycolumns=2]
+    \begin{question}
+    [FUNCAB, PC-PA, 2016] Durante uma operação policial, 12 homens foram detidos e 
+    transportados para a delegacia em três transportes, o primeiro com cinco lugares, o segundo com quatro 
+    lugares e o terceiro com três lugares. O número de maneiras que os detidos podem ser transportados para delegacia, é:
+ 
+ 		  
+ 		  \choice{$P(12,5) \times P(12,4) \times P(12,3)$}
+    		  \choice{$P(12,5) \times P(7,4) \times  P(3,3)$}
+ 		  \choice{$C(12,5) + C(12,4) +  C(12,3)$}
+    		  \choice{\word{{$C(12,5) \times C(12,4) \times  C(12,3)$}{$C(12,5) \times C(7,4) \times  C(3,3)$}}}
+    		  \choice{\word{{$C(12,5) \times C(7,4) \times  C(3,3)$}{$C(12,5) \times C(12,4) \times  C(12,3)$}}}
+ 
+ 		\key{Resposta: \word{{e}{d}}}%OK
+   \end{question}
+  \begin{question}
+	[Adaptada 2014, PR-4,UFRJ] Jorge possui uma coleção de bolas de gude. Ele guarda numa caixa sua coleção que consiste em 10 bolas pretas, 
+	13 bolas vermelhas e 9 bolas azuis. Como estava escuro, Jorge retirou algumas bolas desta caixa sem saber qual a cor das bolas retiradas. 
+	O número mínimo de bolas que Jorge deveria retirar da caixa para garantir que teria pelo menos duas bolas da mesma cor é:
+		\choice{3}
+		\choice[!]{4}
+		\choice{11}
+		\choice{12}
+		\choice{14}
+  \end{question}
+  
+   \begin{question}
+      Considere o grafo representado pela seguinte matriz de adjacência: 
+
+      \begin{center}
+ 
+
+
+      \begin{tabular}{cccc}
+                       & A                      & B                      & C                      \\ \cline{2-4} 
+\multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} \\ \cline{2-4} 
+\multicolumn{1}{c|}{B} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} \\ \cline{2-4} 
+\multicolumn{1}{c|}{C} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} \\ \cline{2-4} 
+\end{tabular}
+\end{center}
+
+Considerando o algoritmo HITS, inicializando a autoridade de cada vértice como o \textbf{grau de entrada} do mesmo, 
+qual é o valor de Hub do vértice \textbf{C} após a primeira iteração (sem normalizar)?
+      \choice{1}
+      \choice{2}
+      \choice{3}
+      \choice{4}
+      \choice{5}
+      \key{~\\~\\ Resposta: c}
+    \end{question}
+ 
+  \begin{block}[questions=2]
+  \columnbreak
+  Para as questões \thefirst\ e \thelast, considere os seguintes grafos $G_1$, $G_2$, $G_3$ e $G_4$.
+  
+  
+     \word{{\pgfuseimage{grafo2}}{\pgfuseimage{grafo1}}}
+ 
+
+    \begin{question}
+      Dentre os grafos, qual pode ser considerado um grafo completo? 
+      
+      \choice{$G_1$}
+      \choice{$G_3$}
+      \choice{$G_4$}
+      \choice{$G_1$ e \word{{$G_4$}{$G_3$}}}
+      \choice{$G_1$, $G_2$ e \word{{$G_3$}{$G_4$}}}
+      \key{~\\~\\ Resposta: \word{{c} {b}}}
+    \end{question}      
+    \begin{question}
+      Dentre os grafos, qual pode ser considerado um grafo conexo?
+      \choice{$G_1$, $G_2$ e $G_3$}
+      \choice{$G_1$, $G_2$ e $G_4$}
+      \choice{$G_2$, $G_3$ e $G_4$}
+      \choice{$G_2$ e $G_3$}
+      \choice{$G_2$ e $G_4$}    
+      \key{~\\~\\ Resposta: \word{{b} {a}}}
+    \end{question}
+        
+  \end{block}
+\end{multiplechoice}
+\begin{fillin}[title={},
+                    rearrange=no,resetcounter=no,suppressprefix]
+
+[5 pontos] 
+          Responda as questões de forma mais clara possível.
+          O aluno também perderá ponto caso não esteja clara a resposta ou se não foi mostrado como que se chegou em um determinado resultado.
+  \begin{question}
+	  Considere o seguinte grafo, representado pela matriz de adjacência:
+	  
+	  \begin{tabular}{ccclc}
+                       & A                      & B                      & C                      & D                      \\ \cline{2-5} 
+\multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{c|}{0} \\ \cline{2-5} 
+\multicolumn{1}{l|}{B} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} \\ \cline{2-5} 
+\multicolumn{1}{c|}{C} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{c|}{1} \\ \cline{2-5} 
+\multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{c|}{0} \\ \cline{2-5} 
+\end{tabular}
+	  
+	  Calcule a primeira iteração do PageRank de cada nodo (dumping factor $d = 1$) utilize a equação do PageRank e considere que os nodos 
+	  foram inicializados com os seguintes valores: $A=0.4; B=0.6; C=0.8; D=0.2$. Apresente como resultado o valor normalizado. 
+	  Resposta sem a memória de cálculo não será considerada.\\
+	  
+      \begin{multicols}{2}[]
+	    \begin{enumerate}
+	    \item[a)] Valor para o vértice $A$: \blank{0,1~~~~~~~~~} 
+	    \item[b)] Valor para o vértice $B$: \blank{0,3~~~~~~~~~} 
+	    \item[c)] Valor para o vértice $C$: \blank{0,1~~~~~~~~~} 
+	    \item[d)] Valor para o vértice $D$: \blank{0,5~~~~~~~~~} 
+	    \end{enumerate}
+      \end{multicols}
+
+  \pagebreak
+  \end{question}          
+          \begin{question}
+		[6 pontos] Considere o grafo: 
+\begin{center}
+\pgfuseimage{dijkstra}
+\end{center}
+
+Execute o algoritmo de Dijsktra para o grafo a seguir tendo B como vértice de origem. 
+Apresente nas tabelas abaixo, após o final de cada iteração, o valor de cada variável do algoritmo de Dijkstra indicada nas tabelas abaixo.
+Onde u é o vértice extraído naquela iteração; Q é a fila de prioridade; p é o vetor  que representa o caminho;  e d é o vetor que  armazena a distância do vértice de origem até o atual. 
+Considere a iteração referente ao while mais externo, ou seja, após percorrer todos os vértices adjacentes do vértice extraído u.
+
+\begin{multicols}{4}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 1}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 2}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 3}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 4}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+\end{multicols}
+
+
+\pagebreak
+
+
+\pagebreak
+\end{question}
+     \begin{question}
+    
+[6 pontos] Na rotina de estudos de João, ele deverá estudar Matemática 1, Matemática 2, Português 1, Português 2, Programação 1 e Demonstrações de Teoremas. 
+Para estudar Matemática 2, deve-se estudar primeiramente Matemática 1. Para estudar Português 2, deve-se estudar primeiramente Português 1.
+Além disso, a disciplina Demonstrações de Teoremas deve ser estudada apenas após estudar Matemática \word{{2}{1}} e Português \word{{1}{2}}. Considere que deseja-se resolver o problema usando o algoritmo de ordenação topológica. [6 pontos]
+
+	  \begin{itemize}
+		  \item[(a)] Para utilizar tal algoritmo, o que o vértice irá representar?\\~\\ \blank{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+		  \item[(b)] Neste algoritmo, o que a aresta irá representar?\\~\\
+		  \blank{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+		  \item[(c)] Desenhe o grafo correspondente.
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\		  ~\\
+		  ~\\
+		 
+		  ~\\
+		  \item[(d)] O algoritmo de ordenação topológica possui uma lista para armazenar o resultado deste problema. 
+		  Simule a execuçao deste algoritmo mostrando, passo a passo, o preenchimento dessa lista (cada vez que ela for atualizada).% por meio das listas baixo.
+		  %A lista pode ter sido atualizada menos que nove vezes, assim, preencha apenas as atualizações que ocorreram no algoritmo.
+		  %Ela também não precisa, necessariamente, terminar com todas as posições preenchidas.
+		  Comece a busca por Matemática 1 ou Português 1. 
+		  Durante o caminhamento, caso seja necessário decidir qual vértice adjacente será visitado, visite sempre em ordem alfabética.
+		  Dica: para facilitar, use siglas: P1, P2, M1, M2, DT correspondendo, respectivamente, à Português 1, Português 2, Matemática 1, 
+		  Matemática 2 e Demonstrações de Teoremas. 
+		  
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#1}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#2}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#3}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}\\
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#4}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#5}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#6}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}\\
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#7}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#8}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+% \begin{tabular}{|llllllll}
+% \hline
+% \multicolumn{8}{|l|}{Atualização da lista \#9}                                                                                                                                                 \\ \cline{2-7}
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{~~~~} & \multicolumn{1}{l|}{} \\
+% \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \cline{2-7}
+%                        & 0                     & 1                     & 2                     & 3                     & 4                     & 5                     & \multicolumn{1}{l|}{} \\ \hline
+% \end{tabular}
+	  \end{itemize}
+    \end{question}  
+    
+\end{fillin}
+\end{document}

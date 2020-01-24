@@ -1,0 +1,380 @@
+\documentclass[16pt]{examdesign}
+
+
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{amsmath}
+\usepackage{pifont}
+%\usepackage{gensymb}
+\usepackage{textcomp}
+\usepackage{multirow}
+
+%\SectionFont{\large\sffamily}
+\Fullpages
+\ContinuousNumbering
+%\ShortKey
+%\NoKey
+
+\DefineAnswerWrapper{}{}
+\NumberOfVersions{4}
+%\IncludeFromFile{foobar.tex}
+\usepackage{colortbl}
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\setrandomseed{1373}
+\usepackage[portuguese]{algorithm2e}
+\definecolor{lightgray}{rgb}{0.85, 0.85, 0.85}
+\newtheorem{theorem}{THEOREM}
+\newtheorem{proof}{PROOF}
+\newcommand{\hgrayline}{\arrayrulecolor{lightgray}\hline\arrayrulecolor{black}}
+
+\addtolength{\textwidth}{80pt}
+\addtolength{\hoffset}{-55pt}
+
+
+\addtolength{\voffset}{-30pt}
+\addtolength{\textheight}{50pt}
+
+%%%%%%%%%%%%%%%Imagens%%%%%%%%%%%%%%%%
+\pgfdeclaremask{grafo1}{grafo1}
+\pgfdeclareimage[mask=grafo1,height=3.5cm]{grafo1}{img/grafos_1.png}
+
+\pgfdeclaremask{grafo2}{grafo2}
+\pgfdeclareimage[mask=grafo2,height=3cm]{grafo2}{img/grafos_2.png}
+
+\pgfdeclaremask{grafo}{grafo}
+\pgfdeclareimage[mask=grafo,height=3cm]{grafo}{img/grafo.png}
+
+\pgfdeclaremask{grafoPR}{grafoPR}
+\pgfdeclareimage[mask=grafoPR, height=1.7cm]{grafoPR}{img/grafoPR.png}
+
+\pgfdeclaremask{dijkstra}{dijkstra}
+\pgfdeclareimage[mask=dijkstra, height=3cm]{dijkstra}{img/dijkstra.png}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\setlength{\fboxsep}{0pt}%
+\setlength{\fboxrule}{1pt}
+
+\newcommand{\aspas}{``}
+\hyphenation{cor-res-pon-de}
+\hyphenation{usa-do}
+\hyphenation{tem-pe-ra-tu-ra}
+% \newenvironment{Figure}
+%   {\par\medskip\noindent\minipage{\linewidth}}
+%   {\endminipage\par\medskip}
+
+%\setlength\columnsep{25pt}
+
+      \pgfdeclaremask{regras}{regras}
+      \pgfdeclareimage[mask=regras,height=7cm]{regras}{img/regra_inferencia.png}
+      
+\begin{document}
+
+
+\begin{examtop}
+
+      \pgfdeclaremask{cefetLogo}{cefetLogo}
+      \pgfdeclareimage[mask=cefetLogo,height=2cm]{cefetLogo}{../../../img/cefetLogo.png}
+      
+    \begin{multicols}{2}[]
+    \begin{minipage}{2.5cm}
+      \pgfuseimage{cefetLogo}
+    \end{minipage}
+      \columnbreak
+      \begin{minipage}{400px}
+      \begin{center}\large{\textbf{Matemática Discreta - Prova 3}}\end{center}~\\
+      Professor: Daniel Hasan Dalip~~~~~~~~Valor: 33 Pontos~~~~~Belo Horizonte, 25/06/2018\\~\\
+      Nome do(a) Aluno(a): \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_	\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_~
+      Nota:\_\_\_\_\_\_\_\_\_\_\_\\       
+      \end{minipage}
+
+
+
+    \end{multicols}
+  \hrulefill
+  \begin{multicols}{2}[]
+  
+    \begin{itemize}
+    \item Prova individual e sem consulta.\vspace{-6pt}
+    \item Não é permitido o uso de aparelhos eletrônicos  \vspace{-6pt}
+    \item A interpretação da questão faz parte da avaliação  \vspace{-6pt}
+    \item A prova pode ser feita a lápis ou caneta  \vspace{-6pt}
+    \item Qualquer tentativa de cola/fraude a prova será zerada  \vspace{-6pt}
+    \end{itemize}
+  \end{multicols}
+
+\def\arraystretch{1}
+\end{examtop}
+
+
+\begin{multiplechoice}[title={Questões de múltipla escolha (3 pontos cada) },rearrange=no, resetcounter=no,suppressprefix,examcolumns=2,keycolumns=2]
+   \begin{question}
+   \vspace{-30pt}
+      Considere o grafo representado pela seguinte matriz de adjacência: 
+
+      \begin{center}
+ 
+
+
+      \begin{tabular}{ccccc}
+                       & A                      & B                      & C                      & D                      \\ \cline{2-5} 
+\multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1}\\ \cline{2-5} 
+\multicolumn{1}{c|}{B} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{1}\\ \cline{2-5} 
+\multicolumn{1}{c|}{C} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1}\\ \cline{2-5} 
+\multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{0}\\ \cline{2-5} 
+\end{tabular}
+\end{center}
+
+Considerando o algoritmo HITS, inicializando a autoridade de cada vértice como o \textbf{grau de entrada} do mesmo, 
+qual é o valor de Hub do vértice \textbf{\word{{C}{A}}} após a primeira iteração (sem normalizar)?
+      \choice{1}
+      \choice{2}
+      \choice{3}
+      \choice{4}
+      \choice{5}
+      \key{~\\~\\ Resposta: \word{{d}{e}}}
+    \end{question}
+      \begin{question}
+	[Adaptado UFES, 2015] Um baralho é composto de 52
+cartas, sendo que há 13 cartas de cada um dos 4 naipes
+(paus, ouros, copas e espadas). A menor quantidade de
+cartas que devem ser retiradas do baralho, sem olhar o
+naipe, de modo a se garantir, com certeza, que sejam re-
+tiradas pelo menos 2 cartas de um mesmo naipe é igual
+a:
+		\choice{3}
+		\choice{4}
+		\choice[!]{5}	
+		\choice{13}
+		\choice{14}
+
+  \end{question}
+ 
+  
+
+    \begin{block}[questions=2]
+  \columnbreak
+
+  Para as questões \thefirst\ e \thelast, considere os seguintes grafos $G_1$, $G_2$, $G_3$ e $G_4$.
+  
+  
+     \word{{\pgfuseimage{grafo2}}{\pgfuseimage{grafo1}}}
+ 
+
+    \begin{question}
+      Dentre os grafos, qual pode ser considerado um grafo completo? 
+      
+      \choice{$G_1$}
+      \choice{$G_3$}
+      \choice{$G_4$}
+      \choice{$G_1$ e \word{{$G_4$}{$G_3$}}}
+      \choice{$G_1$, $G_2$ e \word{{$G_3$}{$G_4$}}}
+      \key{~\\~\\ Resposta: \word{{c} {b}}}
+    \end{question}      
+    \begin{question}
+      Dentre os grafos, qual pode ser considerado um grafo conexo?
+      \choice{$G_1$, $G_2$ e $G_3$}
+      \choice{$G_1$, $G_2$ e $G_4$}
+      \choice{$G_2$, $G_3$ e $G_4$}
+      \choice{$G_2$ e $G_3$}
+      \choice{$G_2$ e $G_4$}    
+      \key{~\\~\\ Resposta: \word{{b} {a}}}
+    \end{question}
+        
+  \end{block}
+   \begin{question}
+  [FDC, Fiocruz, 2014] Três técnicos e quatro engenheiros elaboraram um plano de melhorias das condições ambientais no trabalho. Dois técnicos e dois engenheiros serão escolhidos, dentre eles, para apresentar o plano à direção da empresa. O número de diferentes equipes de apresentação que podem ser formadas é igual a:
+
+    \choice{$C(3,2) \word{{+}{\times}} C(4,2)$}
+    \choice{$C(3,2) \word{{\times}{+}} C(4,2)$}
+    \choice{$P(3,2) + P(4,2)$}
+    \choice{$P(3,2) \times P(4,2)$}
+    \choice{$P(7,4)$}
+  
+	
+		
+		%\choice{\word{{\FD}{\V}  {\FD}{\FD}}}
+		\key{~\\~\\ Resposta: \word{{b} {a}}}
+  \end{question}
+
+\end{multiplechoice}
+\begin{fillin}[title={},
+                    rearrange=no,resetcounter=no,suppressprefix]
+
+[5 pontos] 
+          Responda as questões de forma mais clara possível.
+          O aluno também perderá ponto caso não esteja clara a resposta ou se não foi mostrado como que se chegou em um determinado resultado.
+  \begin{question}
+	  Considere o seguinte grafo, representado pela matriz de adjacência:
+	  
+	  \begin{center}
+	  \begin{tabular}{ccclc}
+                       & A                      & B                      & C                      & D                      \\ \cline{2-5} 
+\multicolumn{1}{c|}{A} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{l|}{1} & \multicolumn{1}{c|}{0} \\ \cline{2-5} 
+\multicolumn{1}{l|}{B} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{0} & \multicolumn{1}{l|}{1} \\ \cline{2-5} 
+\multicolumn{1}{c|}{C} & \multicolumn{1}{c|}{0} & \multicolumn{1}{c|}{1} & \multicolumn{1}{l|}{0} & \multicolumn{1}{c|}{1} \\ \cline{2-5} 
+\multicolumn{1}{c|}{D} & \multicolumn{1}{c|}{1} & \multicolumn{1}{c|}{0} & \multicolumn{1}{l|}{1} & \multicolumn{1}{c|}{0} \\ \cline{2-5} 
+\end{tabular}
+\end{center}
+	  
+	  Calcule a primeira iteração do PageRank de cada nodo (dumping factor $d = 1$) utilize a equação do PageRank e considere que os nodos 
+	  foram inicializados com os seguintes valores: $A=0.4; B=0.6; C=0.8; D=0.2$. Apresente como resultado o valor normalizado. 
+	  Resposta sem a memória de cálculo não será considerada.\\
+	  
+      \begin{multicols}{2}[]
+	    \begin{enumerate}
+	    \item[a)] Valor para o vértice $A$: \blank{0,1~~~~~~~~~} 
+	    \item[b)] Valor para o vértice $B$: \blank{0,3~~~~~~~~~} 
+	    \item[c)] Valor para o vértice $C$: \blank{0,1~~~~~~~~~} 
+	    \item[d)] Valor para o vértice $D$: \blank{0,5~~~~~~~~~} 
+	    \end{enumerate}
+      \end{multicols}
+
+  \pagebreak
+  \end{question}          
+          \begin{question}
+		[6 pontos] Considere o grafo: 
+\begin{center}
+\pgfuseimage{dijkstra}
+\end{center}
+
+Execute o algoritmo de Dijsktra para o grafo a seguir tendo B como vértice de origem. 
+Apresente nas tabelas abaixo, após o final de cada iteração  (i.e. iteração referente ao while mais externo, ou seja, após percorrer todos os vértices adjacentes do vértice extraído u): o vértice extraído u, 
+a fila de prioridade Q  os vetores p (representando o caminho) e d (representando a distância do vértice de origem até o atual). 
+\begin{multicols}{4}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 1}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 2}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 3}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+  \begin{tabular}{|llllll|}
+  \hline
+  \multicolumn{6}{|c|}{Iteração \# 4}                                                                                                          \\
+					    &                       &                       &                       &                       &  \\
+  u:                                        &                       &                       &                       &                       &  \\ \cline{2-3}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{Q:}                  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|r|}{\multirow{2}{*}{p:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|r|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\
+					    &                       &                       &                       &                       &  \\ \cline{2-5}
+  \multicolumn{1}{|l|}{\multirow{2}{*}{d:}} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\
+  \multicolumn{1}{|l|}{}                    & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-5}
+					    & A                     & B                     & C                     & D                     &  \\ \hline
+  \end{tabular}
+\end{multicols}
+
+
+\pagebreak
+\end{question}
+     \begin{question}
+    
+[6 pontos] Na rotina de estudos de João, ele deverá estudar Matemática 1, Matemática 2, Português 1, Português 2, Programação 1 e Demonstrações de Teoremas. 
+Para estudar Matemática 2, deve-se estudar primeiramente Matemática 1. Para estudar Português 2, deve-se estudar primeiramente Português 1.
+Além disso, a disciplina Demonstrações de Teoremas deve ser estudada apenas após estudar Matemática \word{{2}{1}} e Português \word{{1}{2}}. Considere que deseja-se resolver o problema usando o algoritmo de ordenação topológica. [6 pontos]
+
+	  \begin{itemize}
+		  \item[(a)] Para utilizar tal algoritmo, o que o vértice irá representar?\\~\\ \blank{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+		  \item[(b)] Neste algoritmo, o que a aresta irá representar?\\~\\
+		  \blank{~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~}
+		  \item[(c)] Desenhe o grafo correspondente. Dica: para facilitar, use siglas: P1, P2, M1, M2, DT correspondendo, respectivamente, à Português 1, Português 2, Matemática 1, 
+		  Matemática 2 e Demonstrações de Teoremas.
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  \item[(d)] O algoritmo de ordenação topológica possui uma lista para armazenar o resultado deste problema. 
+		  Simule a execuçao deste algoritmo mostrando, passo a passo, o preenchimento dessa lista (cada vez que ela for atualizada). Comece a busca por Matemática 1 ou Português 1. 
+		  Durante o caminhamento, caso seja necessário decidir qual vértice adjacente será visitado, visite sempre em ordem alfabética. Use as mesmas siglas da letra (c) para representar cada vértice.
+		  
+~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+		  ~\\
+
+	  \end{itemize}
+    \end{question}  
+    
+\end{fillin}
+\end{document}
