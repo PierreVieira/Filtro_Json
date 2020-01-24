@@ -5,7 +5,7 @@ from src.auxiliar import erro_diretorio_inexistente
 def get_arqs_pesquisa():
     """
     Na pasta 'input_output' tem um txt que contem o nome dos arquivos que queremos pesquisar.
-    Essa função vai ler o caminho (strirng) que direciona os arquivos de pesquisa e adicioná-los a uma lista.
+    Esta função vai ler o caminho (strirng) que direciona os arquivos de pesquisa e adicioná-los a uma lista.
     :return: lista contendo o caminho (string) dos arquivos de pesquisa.
     """
     entrada_pesquisa = 'input_output/arquivos_pesquisa.txt'
